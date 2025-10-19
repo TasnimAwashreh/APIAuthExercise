@@ -1,0 +1,6 @@
+@API_AuthExcercise_HostAddress = http://localhost:5029
+
+GET {{API_AuthExcercise_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
