@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.DataProtection.KeyManagement;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -15,10 +14,10 @@ namespace API_AuthExcercise.API
 
         public JwtTokenGenerator(IConfiguration config)
         {
-            _configKey = config["JwtToken:Key"] ?? throw new Exception();
-            _expiryTime = config["JwtToken:ExpireTime"] ?? throw new Exception();
-            _issuer = config["JwtToken:Issuer"] ?? throw new Exception();
-            _audience = config["JwtToken:Audience"] ?? throw new Exception();
+            _configKey = config["JwtToken:Key"] ?? throw new NullReferenceException();
+            _expiryTime = config["JwtToken:ExpireTime"] ?? throw new NullReferenceException();
+            _issuer = config["JwtToken:Issuer"] ?? throw new NullReferenceException();
+            _audience = config["JwtToken:Audience"] ?? throw new NullReferenceException();
         }
 
         public string GenerateToken(string email, string password)

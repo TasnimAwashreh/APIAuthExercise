@@ -7,7 +7,7 @@ namespace API_AuthExcercise
 {
     public static class Configuration
     {
-        public static IServiceCollection AddConfiguration(this IServiceCollection services)
+        public static IServiceCollection ConfigureServices(this IServiceCollection services)
         {
             var config = new ConfigurationBuilder()
                 .SetBasePath(AppContext.BaseDirectory)
