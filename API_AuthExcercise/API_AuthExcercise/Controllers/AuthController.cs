@@ -1,5 +1,6 @@
 ﻿using API_AuthExcercise.API.Models;
 using API_AuthExcercise.API.Requests;
+using API_AuthExcercise.API.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,7 +23,7 @@ namespace API_AuthExcercise.API.Controllers
             try
             {
                 var token = _jwtGenerator.GenerateToken(userReq.Username, userReq.Password);
-                return Ok(token);
+                return Ok(new UserLoginResponse { Token = token });
             }
             catch (Exception ex) {
                 return BadRequest(ex.Message);
@@ -37,7 +38,7 @@ namespace API_AuthExcercise.API.Controllers
             try
             {
                 bool isValid = _jwtGenerator.ValidateToken(tokenReq.Token);
-                return Ok(new { valid = isValid });
+                return Ok(new ValidationResponse{ Valid = isValid });
             }
             catch (Exception ex)
             {
