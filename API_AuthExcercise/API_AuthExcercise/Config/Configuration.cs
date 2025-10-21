@@ -6,13 +6,8 @@ namespace API_AuthExcercise.API.Config
 {
     public static class Configuration
     {
-        public static IServiceCollection ConfigureServices(this IServiceCollection services)
+        public static IServiceCollection ConfigureServices(this IServiceCollection services, IConfiguration config)
         {
-            var config = new ConfigurationBuilder()
-                .SetBasePath(AppContext.BaseDirectory)
-                .AddJsonFile("appsettings.json")
-                .Build();
-            services.AddSingleton<IConfiguration>(config);
             services.Configure<JwtOptions>(config.GetSection(JwtOptions.Section));
             var jwtOptions = config.GetSection(JwtOptions.Section).Get<JwtOptions>();
 
