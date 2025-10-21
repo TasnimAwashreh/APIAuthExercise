@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace API_AuthExcercise.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("auth")]
     public class AuthController : Controller
     {
         private readonly JwtTokenGenerator _jwtGenerator;

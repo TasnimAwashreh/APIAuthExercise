@@ -24,4 +24,6 @@ Example Body:
 >    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI1YTFjZmJhZC1kNzIyLTQ0MjUtOGJhMS05ZTQ5MmJhYjQ4N2IiLCJzdWIiOiJhZG1pbiIsIm5iZiI6MTc2MTAzMTUyNSwiZXhwIjoxNzYxMDM1MTI1LCJpYXQiOjE3NjEwMzE1MjUsImlzcyI6Imh0dHBzOi8vZm9vdGhpbGxzb2x1dGlvbnMuY29tIiwiYXVkIjoibG9jYWxob3N0In0.2oc0uU4gxxQBZl-rdmi-azR2O3qbMSJALBPcdj01bOo"
 >}
 
-Note: Please add the token in the header as a bearer token as well
+Notes: 
+- Please add the token in the header as a bearer token as well
+- Token may be expired as they last about a day

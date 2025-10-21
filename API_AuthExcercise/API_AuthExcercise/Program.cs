@@ -1,4 +1,4 @@
-using API_AuthExcercise;
+using API_AuthExcercise.API.Config;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.ConfigureServices();

@@ -1,4 +1,6 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using API_AuthExcercise.API.Config;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -12,15 +14,15 @@ namespace API_AuthExcercise.API
         private readonly string _issuer;
         private readonly string _audience;
 
-        public JwtTokenGenerator(IConfiguration config)
+        public JwtTokenGenerator(IOptions<JwtOptions> opts)
         {
-            _configKey = config["JwtToken:Key"] ?? throw new NullReferenceException();
-            _expiryTime = config["JwtToken:ExpireTime"] ?? throw new NullReferenceException();
-            _issuer = config["JwtToken:Issuer"] ?? throw new NullReferenceException();
-            _audience = config["JwtToken:Audience"] ?? throw new NullReferenceException();
+            _configKey = opts.Value.Key ?? throw new NullReferenceException();
+            _expiryTime = opts.Value.ExpireTime ?? throw new NullReferenceException();
+            _issuer = opts.Value.Issuer ?? throw new NullReferenceException();
+            _audience = opts.Value.Audience ?? throw new NullReferenceException();
         }
 
-        public string GenerateToken(string email, string password)
+        public string GenerateToken(string username, string password)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF8.GetBytes(_configKey);
@@ -28,7 +30,7 @@ namespace API_AuthExcercise.API
             var claims = new List<Claim>
             {
                 new (JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new (JwtRegisteredClaimNames.Sub, email)
+                new (JwtRegisteredClaimNames.Sub, username)
             };
 
             var tokenDescriptor = new SecurityTokenDescriptor()
